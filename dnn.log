@@ -1,7 +1,44 @@
-HDecode -A -D -T 10 -V -H hmmdefs.dnn -S list.scp -t 220.0 220.0 -C config.hdecode -i recout.mlf.dnn -w PLPL-v7.0.bg -p 0.0 -s 5.0 PLPL-v7.0.dct tiedlist.cross 
+HCopy -A -D -T 1 -C wav_config -S codetest.scp 
 
-HTK Configuration Parameters[3]
+HTK Configuration Parameters[11]
   Module/Tool     Parameter                  Value
+#                 NUMCEPS                       12
+#                 CEPLIFTER                     22
+#                 NUMCHANS                      26
+#                 PREEMCOEF               0.970000
+#                 USEHAMMING                  TRUE
+#                 WINDOWSIZE         250000.000000
+#                 SAVEWITHCRC                 TRUE
+#                 SAVECOMPRESSED              TRUE
+#                 TARGETRATE         100000.000000
+#                 TARGETKIND          MFCC_E_D_A_Z
+#                 SOURCEFORMAT                 WAV
+
+file.wav -> file.mfc 
+
+HTK Configuration Parameters[11]
+  Module/Tool     Parameter                  Value
+                  NUMCEPS                       12
+                  CEPLIFTER                     22
+                  NUMCHANS                      26
+                  PREEMCOEF               0.970000
+                  USEHAMMING                  TRUE
+                  WINDOWSIZE         250000.000000
+                  SAVEWITHCRC                 TRUE
+                  SAVECOMPRESSED              TRUE
+                  TARGETRATE         100000.000000
+                  TARGETKIND          MFCC_E_D_A_Z
+                  SOURCEFORMAT                 WAV
+
+HDecode -A -D -T 10 -V -H hmmdefs.dnn -S list.scp -t 220.0 220.0 -C config.hdecode.dnn -i recout.mlf.dnn -w PLPL-v7.0.bg -p 0.0 -s 12.0 PLPL-v7.0.dct tiedlist.cross 
+
+HTK Configuration Parameters[8]
+  Module/Tool     Parameter                  Value
+# HANNET          MINIBATCHSIZE                200
+# HPARM           VARSCALEFN      ident_MFCC_E_D_A_Z_cvn
+# HPARM           VARSCALEPATHMASK             *.%%%
+# HPARM           VARSCALEMASK               *.%%%
+# HPARM           VARSCALEDIR                  cvn
 #                 ENDWORD                     </s>
 #                 STARTWORD                    <s>
 #                 TARGETKIND          MFCC_E_D_A_Z
@@ -12,7 +49,6 @@ Module     Version    Who    Date      : CVS Info
 HDecode    3.5.0      CUED   12/10/15  : $Id: HDecode.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
 HShell     3.5.0      CUED   12/10/15  : $Id: HShell.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
 HMem       3.5.0      CUED   12/10/15  : $Id: HMem.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
-HCUDA      3.5.0      CUED   12/10/15  : $Id: HCUDA.cu,v 1.0 2015/10/12 12:07:23 cz277 Exp $
 HMath      3.5.0      CUED   12/10/15  : $Id: HMath.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
 HSigP      3.5.0      CUED   12/10/15  : $Id: HSigP.c,v 1.1.1.1 2006/10/11 09:54:58 jal58 Exp $
 HWave      3.5.0      CUED   12/10/15  : $Id: HWave.c,v 1.2 2015/10/12 12:07:24 cz277 Exp $
@@ -31,50 +67,42 @@ HAdapt     3.5.0      CUED   12/10/15  : $Id: HAdapt.c,v 1.3 2015/10/12 12:07:24
 HLat       3.5.0      CUED   12/10/15  : $Id: HLat.c,v 1.2 2015/12/18 18:18:18 xl207 Exp $
 HNCache    3.5.0      CUED   12/10/15  : $Id: HNCache.c,v 1.0 2015/10/12 12:07:24 cz277 Exp $
 
-CUDA driver version 8000
-CUDA runtime version 8000
-CUBLAS library version 8000
-GPU 0: GeForce GTX 750 Ti, 1999MB, SM = 5.0 [Selected]
-
 lmla count 74972
 nprons 50146
-(More than) 29MB space allocated in GPU 0 memory
-CPU time 0.480000  utterance length 10.180000  RT factor 0.047151
-	Forwarding time is 0.470000, which takes 97.92% of the time cost    RT factor 0.046169
-	Decoding time is 0.000000, which takes 0.00% of the time cost    RT factor 0.000000
-	Cache loading time is 0.010000, which takes 2.08% of the time cost    RT factor 0.000982
- WARNING [-7820]  no token survived to sent end! in HDecode
- WARNING [-7820]  best inst is dead as well! in HDecode
-Stats: nTokSet 4069
-Stats: TokPerSet 1.000000
-Stats: activePerFrame 1.000000
-Stats: activateNodePerFrame 0.000000
-Stats: deActivateNodePerFrame 0.000000
+CPU time 95.844000  utterance length 10.010000  RT factor 9.574825
+	Forwarding time is 6.142000, which takes 6.41% of the time cost    RT factor 0.613586
+	Decoding time is 89.702000, which takes 93.59% of the time cost    RT factor 8.961239
+	Cache loading time is 0.000000, which takes 0.00% of the time cost    RT factor 0.000000
+Stats: nTokSet 56570736
+Stats: TokPerSet 20.393521
+Stats: activePerFrame 21722.245754
+Stats: activateNodePerFrame 9975.323676
+Stats: deActivateNodePerFrame 9921.821179
 
 memory stats at end of recognition
 
 ---------------------- Heap Statistics ------------------------
-nblk=  0, siz=  1000*1048, used=        0, alloc=        0 : LMNodeCache Heap[M]
-nblk=  0, siz=100000000*1  , used=      424, alloc=      472 : cache heap[C]
-nblk=  1, siz=320000*1  , used=        0, alloc=   160000 : Input Buffer Heap[S]
-nblk=  0, siz=  8000*24 , used=        0, alloc=        0 : AltWordendHyp heap[M]
-nblk=  0, siz= 80000*40 , used=        0, alloc=        0 : WordendHyp heap[M]
-nblk=  1, siz=  2000*6144, used=       15, alloc= 12288000 : Decoder RelToken array heap[M]
-nblk=  1, siz=  2000*1024, used=        5, alloc=  2048000 : Decoder RelToken array heap[M]
-nblk=  1, siz=   100*120, used=        2, alloc=    12000 : Decoder 5 TokenSet heap[M]
+nblk= 24, siz=  2000*1048, used=    47023, alloc= 50304000 : LMNodeCache Heap[M]
+nblk=  0, siz=100000000*1  , used=     2812, alloc=     2860 : cache heap[C]
+nblk=  1, siz=160000*1  , used=        0, alloc=   160000 : Input Buffer Heap[S]
+nblk= 16, siz= 80000*24 , used=   255204, alloc= 27648000 : AltWordendHyp heap[M]
+nblk=  6, siz=800000*40 , used=   309655, alloc=140800000 : WordendHyp heap[M]
+nblk=  2, siz=  4000*6144, used=     4867, alloc= 36864000 : Decoder RelToken array heap[M]
+nblk= 51, siz=  5000*1024, used=   219475, alloc=257024000 : Decoder RelToken array heap[M]
+nblk= 12, siz=  5000*120, used=    41914, alloc=  6132000 : Decoder 5 TokenSet heap[M]
 nblk=  1, siz=   100*96 , used=        1, alloc=     9600 : Decoder 4 TokenSet heap[M]
-nblk=  1, siz=   100*72 , used=        1, alloc=     7200 : Decoder 3 TokenSet heap[M]
+nblk=  3, siz=  5000*72 , used=     1560, alloc=   439200 : Decoder 3 TokenSet heap[M]
 nblk=  1, siz=   100*48 , used=        1, alloc=     4800 : Decoder 2 TokenSet heap[M]
-nblk=  1, siz=   100*24 , used=        1, alloc=     2400 : Decoder 1 TokenSet heap[M]
-nblk=  1, siz=  2500*32 , used=        1, alloc=    80000 : Decoder NodeInstance heap[M]
-nblk=  3, siz=100000*1  , used=   657824, alloc=   699688 : Decoder Instance heap[S]
+nblk=  5, siz=  5000*24 , used=    10086, alloc=   386400 : Decoder 1 TokenSet heap[M]
+nblk=  8, siz= 10000*32 , used=    53557, alloc=  2200000 : Decoder NodeInstance heap[M]
+nblk= 32, siz=100000*1  , used=  3235272, alloc=  3599688 : Decoder Instance heap[S]
 nblk=799, siz=  4000*1  , used=  3159432, alloc=  3186208 : Phones Heap[S]
 nblk= 29, siz=  2000*56 , used=    50146, alloc=  2832200 : Pron Heap[M]
 nblk= 29, siz=  2000*40 , used=    50034, alloc=  2023000 : Word Heap[M]
 nblk=  1, siz=  8000*1  , used=        0, alloc=     8000 : Transcription heap[S]
 nblk= 88, siz=1000000*1  , used= 86882888, alloc= 88000000 : LM heap[S]
 nblk= 28, siz=100000*1  , used= 11576488, alloc= 11833520 : Net heap[S]
-nblk= 75, siz=100000*1  , used= 38483552, alloc= 39124056 : Model heap[S]
+nblk= 90, siz=100000*1  , used= 47872008, alloc= 49272856 : Model heap[S]
 nblk=  0, siz=  1000*1  , used=        0, alloc=        0 : labStore[S]
 nblk=  1, siz=  3375*1  , used=        0, alloc=     1504 : pbufStore[S]
 nblk=  0, siz=  1000*1  , used=        0, alloc=        0 : LLF stack[S]
@@ -93,32 +121,32 @@ nblk=  0, siz=   100*1  , used=        0, alloc=        0 : XFormStore[S]
 nblk=  0, siz= 10000*1  , used=        0, alloc=        0 : mlfHeap[S]
 nblk=297, siz= 20000*1  , used=  5901864, alloc=  5915640 : namecellHeap[S]
 nblk=  0, siz=  5000*1  , used=        0, alloc=        0 : sigpHeap[S]
-nblk=  0, siz=100000*1  , used=    30742, alloc=    30966 : Global C Heap[C]
+nblk=  0, siz=100000*1  , used=    31261, alloc=    31541 : Global C Heap[C]
 nblk=  4, siz=100000*1  , used=       16, alloc= 18486784 : Global Stack[S]
 ---------------------------------------------------------------
 Memory State on Completion
 
 ---------------------- Heap Statistics ------------------------
-nblk=  0, siz=100000000*1  , used=      424, alloc=      472 : cache heap[C]
+nblk=  0, siz=100000000*1  , used=     2812, alloc=     2860 : cache heap[C]
 nblk=  1, siz= 80000*1  , used=        0, alloc=   160000 : Input Buffer Heap[S]
-nblk=  0, siz=  8000*24 , used=        0, alloc=        0 : AltWordendHyp heap[M]
-nblk=  0, siz= 80000*40 , used=        0, alloc=        0 : WordendHyp heap[M]
-nblk=  1, siz=  2000*6144, used=       15, alloc= 12288000 : Decoder RelToken array heap[M]
-nblk=  1, siz=  2000*1024, used=        5, alloc=  2048000 : Decoder RelToken array heap[M]
-nblk=  1, siz=   100*120, used=        2, alloc=    12000 : Decoder 5 TokenSet heap[M]
+nblk= 16, siz= 80000*24 , used=   255204, alloc= 27648000 : AltWordendHyp heap[M]
+nblk=  6, siz=800000*40 , used=   309655, alloc=140800000 : WordendHyp heap[M]
+nblk=  2, siz=  4000*6144, used=     4867, alloc= 36864000 : Decoder RelToken array heap[M]
+nblk= 51, siz=  5000*1024, used=   219475, alloc=257024000 : Decoder RelToken array heap[M]
+nblk= 12, siz=  5000*120, used=    41914, alloc=  6132000 : Decoder 5 TokenSet heap[M]
 nblk=  1, siz=   100*96 , used=        1, alloc=     9600 : Decoder 4 TokenSet heap[M]
-nblk=  1, siz=   100*72 , used=        1, alloc=     7200 : Decoder 3 TokenSet heap[M]
+nblk=  3, siz=  5000*72 , used=     1560, alloc=   439200 : Decoder 3 TokenSet heap[M]
 nblk=  1, siz=   100*48 , used=        1, alloc=     4800 : Decoder 2 TokenSet heap[M]
-nblk=  1, siz=   100*24 , used=        1, alloc=     2400 : Decoder 1 TokenSet heap[M]
-nblk=  1, siz=  2500*32 , used=        1, alloc=    80000 : Decoder NodeInstance heap[M]
-nblk=  3, siz=100000*1  , used=   657824, alloc=   699688 : Decoder Instance heap[S]
+nblk=  5, siz=  5000*24 , used=    10086, alloc=   386400 : Decoder 1 TokenSet heap[M]
+nblk=  8, siz= 10000*32 , used=    53557, alloc=  2200000 : Decoder NodeInstance heap[M]
+nblk= 32, siz=100000*1  , used=  3235272, alloc=  3599688 : Decoder Instance heap[S]
 nblk=799, siz=  4000*1  , used=  3159432, alloc=  3186208 : Phones Heap[S]
 nblk= 29, siz=  2000*56 , used=    50146, alloc=  2832200 : Pron Heap[M]
 nblk= 29, siz=  2000*40 , used=    50034, alloc=  2023000 : Word Heap[M]
 nblk=  1, siz=  8000*1  , used=        0, alloc=     8000 : Transcription heap[S]
 nblk= 88, siz=1000000*1  , used= 86882888, alloc= 88000000 : LM heap[S]
 nblk= 28, siz=100000*1  , used= 11576488, alloc= 11833520 : Net heap[S]
-nblk= 75, siz=100000*1  , used= 38483552, alloc= 39124056 : Model heap[S]
+nblk= 90, siz=100000*1  , used= 47872008, alloc= 49272856 : Model heap[S]
 nblk=  0, siz=  1000*1  , used=        0, alloc=        0 : labStore[S]
 nblk=  1, siz=  3375*1  , used=        0, alloc=     1504 : pbufStore[S]
 nblk=  0, siz=  1000*1  , used=        0, alloc=        0 : LLF stack[S]
@@ -137,12 +165,17 @@ nblk=  0, siz=   100*1  , used=        0, alloc=        0 : XFormStore[S]
 nblk=  0, siz= 10000*1  , used=        0, alloc=        0 : mlfHeap[S]
 nblk=297, siz= 20000*1  , used=  5901864, alloc=  5915640 : namecellHeap[S]
 nblk=  0, siz=  5000*1  , used=        0, alloc=        0 : sigpHeap[S]
-nblk=  0, siz=100000*1  , used=    30742, alloc=    30966 : Global C Heap[C]
+nblk=  0, siz=100000*1  , used=    31261, alloc=    31541 : Global C Heap[C]
 nblk=  4, siz=100000*1  , used=       16, alloc= 18486784 : Global Stack[S]
 ---------------------------------------------------------------
 
-HTK Configuration Parameters[3]
+HTK Configuration Parameters[8]
   Module/Tool     Parameter                  Value
+  HANNET          MINIBATCHSIZE                200
+  HPARM           VARSCALEFN      ident_MFCC_E_D_A_Z_cvn
+  HPARM           VARSCALEPATHMASK             *.%%%
+  HPARM           VARSCALEMASK               *.%%%
+  HPARM           VARSCALEDIR                  cvn
                   ENDWORD                     </s>
                   STARTWORD                    <s>
                   TARGETKIND          MFCC_E_D_A_Z
